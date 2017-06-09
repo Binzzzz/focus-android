@@ -90,7 +90,9 @@ public class HintFrameLayout extends FrameLayout implements TextWatcher {
         final float y = ((float) canvas.getHeight() + bounds.height()) / 2;
 
         final float max = ((float) canvas.getWidth() - bounds.width()) / 2;
-        final float min = padding;
+        final float min = getLayoutDirection() == LAYOUT_DIRECTION_RTL
+                ? canvas.getWidth() - bounds.width() - padding
+                : padding;
 
         final float x = (max - min) * animationOffset + min;
 
